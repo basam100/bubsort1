@@ -31,11 +31,11 @@ void displayArray(int arr[], int size) {
 
 
 
-void swap2(int& a, int& b) {
-    int c = a;
+void swap2(int* a, int* b) {
+    int c = *a;
 
-    a = b;
-    b = c;
+    *a = *b;
+    *b = c;
 
 
 }
@@ -46,7 +46,7 @@ void bubbleSort(int arr[], int size) {
 
         for (int j = 0; i < size - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                swap2(arr[j], arr[j + 1]);
+                swap2(&arr[j], &arr[j + 1]);
             }
         }
 
@@ -56,6 +56,21 @@ void bubbleSort(int arr[], int size) {
 
 
 
+}
+
+void selectionSort(int arr[], int size) {
+
+    for (int i = 0; i < size - 1; i++) {
+        int smallest = i;
+        for (int j = i+1; j < size; j++) {
+            if (arr[j] < arr[smallest])
+                smallest = j;
+        if (smallest != i)
+        swap2(&arr[smallest], &arr[j]);
+        }
+            
+
+    }
 }
 
 
@@ -68,7 +83,8 @@ int main()
     cin >> ans;
     int list[SIZE];
     fillArray(list, SIZE, ans);
-    bubbleSort(list, SIZE);
+    selectionSort(list, SIZE);
+    cout << endl;
     displayArray(list, SIZE);
 
     return 0;
