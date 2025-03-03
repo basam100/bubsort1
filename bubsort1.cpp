@@ -62,14 +62,14 @@ void selectionSort(int arr[], int size) {
 
     for (int i = 0; i < size - 1; i++) {
         int smallest = i;
-        for (int j = i+1; j < size; j++) {
+        for (int j = i ; j < size; j++) {
             if (arr[j] < arr[smallest])
                 smallest = j;
-        if (smallest != i)
-        swap2(&arr[smallest], &arr[j]);
-        }
-            
+            swap2(&arr[smallest], &arr[i]);
 
+
+
+        }
     }
 }
 
