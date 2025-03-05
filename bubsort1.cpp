@@ -72,6 +72,29 @@ void selectionSort(int arr[], int size) {
         }
     }
 }
+int binarySearch(int arr[], int size, int key) {
+    
+    int low = 0;
+    int high = size - 1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (key == arr[mid]) {
+            return mid;
+     
+        }
+        else if (key < arr[mid]) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+    return -1;
+
+
+
+};
 
 
 
@@ -86,6 +109,14 @@ int main()
     selectionSort(list, SIZE);
     cout << endl;
     displayArray(list, SIZE);
-
+    cout << endl << "What number did you want to search for?: ";
+    cin >> ans;
+    int result = binarySearch(list, SIZE, ans);
+    if (result == -1) {
+        cout << endl << "Not found!";
+    }
+    else {
+        cout << endl << ans << " was found at index: " << result;
+    }
     return 0;
 }
